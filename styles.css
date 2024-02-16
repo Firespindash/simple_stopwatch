@@ -38,14 +38,45 @@ body, .wrapper, #hidden-button {
 	50% { opacity: 0; }
 }
 
-@media (min-width: 1080px) and (orientation: landscape) {
-	:root {
-		font-size: 18px;
-	}
+#reload {
+	-webkit-tap-highlight-color: transparent;
+	position: fixed;
+	top: 2rem; left: 2rem;
+	width: 4rem; height: 4rem;
+	line-height: 4rem;
+	font-size: 2.5rem;
+	color: #000;
+	background-color: transparent;
+	border-radius: .5rem;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	display: flex;
+	align-items: stretch;
+	justify-content: center;
+	text-align: center;
+	overflow: hidden;
+	z-index: 9999;
 }
 
-@media (max-width: 1080px) {
+#reload img {
+	position: absolute;
+	inset: 0;
+	margin: auto; padding: 0;
+	transform: rotate(-7deg);
+	max-height: 75%;
+	max-width: 75%;
+	width: auto; height: auto;
+	object-fit: contain;
+}
+
+@media screen and (orientation: portrait) {
 	:root {
 		font-size: 8px;
+	}
+	#reload {
+		top: calc(100% - 20rem);
+		left: 4rem;
+		width: 8rem; height: 8rem;
 	}
 }

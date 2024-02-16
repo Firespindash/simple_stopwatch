@@ -1,6 +1,7 @@
 let ms = 0, s = 0, m = 0, h = 0;
 let runner;
 let stopwatch = document.getElementById('stopwatch');
+const reloadButton = document.getElementById('reload');
 
 makeItBlink = (flag) => {
   flag == true ? stopwatch.classList.add("blink") :
@@ -55,3 +56,21 @@ clickIt = () => {
    start()  // Start
   : stop(); // Pause
 }
+
+reload = () => {
+  runner ?
+   (clearInterval(runner), runner = false)
+  : makeItBlink(false);
+  ms = 0, s = 0, m = 0, h = 0;
+  updateDisplay(h, m, s, ms);
+}
+
+window.addEventListener('keydown', (pressed) => {
+  if (pressed.code == 'Escape' || pressed.code == 'Backspace') reload();
+});
+
+window.addEventListener('keypress', (pressed) => { // Detects only some keys
+  if (pressed.code != 'Space' && pressed.code != 'Enter')
+   if (!pressed.repeat) // Prevent holding a key and breaking it
+    (pressed.key == 'r' || pressed.key == 'R') ? reload() : clickIt()
+});
